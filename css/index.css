@@ -1,0 +1,28 @@
+* {
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+    color: white
+
+}
+
+body{
+    height: 50vh;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+align-items: center;
+background:linear-gradient(rgb(47,150,163),rgb(48,62,143));
+font-family: sans-serif;
+color:white;
+}
+.location{
+    height: 30vh;
+    width: 50%;
+    display:flex;
+    justify-content: space-around;
+    align-items: center;
+
+}
+
+
