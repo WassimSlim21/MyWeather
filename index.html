@@ -3,7 +3,7 @@
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>Page Title</title>
-    <script src="js/jqueryfinal.min.js"></script>
+    <script src="assets/js/jqueryfinal.min.js"></script>
 </head>
 <body>
     <!--
@@ -43,84 +43,46 @@
 </body>
 
 <body>
-    <h1>Display OpenWeatherMap API data in a jQuery DataTables</h1>
-    <h2>Important Link - <a href="http://www.yogihosting.com/jquery-datatables/">jQuery DataTables</a></h2>
-    <h3><button id="download">Download »</button></h3>
-    <div id="content">
-        <h3>Click the button to get Weather Information of different Cities</h3>
-        <div class="textAlignCenter">
-            <button id="submitButton">Get Weather</button>
-            <table id="weatherTable"></table>
-        </div>
-    </div>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-    <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+        <header class="masthead">
+                <div class="row">
+                    <div class="col">
+                    <img  src="assets/images/logo.png" class="mx-auto" style="width: 170px; margin-top: 10px;"></img>           
+            </div>
+            </div> 
+        </header>
+    <section>
+            <div class="location">
+                    <h1 class="location-timezone">GET Current Weather</h1>
+            </div>
+            <div class="temperature">
+                    <div class="form-group">
+                <input type="text" class="form-control" id="city" name="city">
+                <button id="submitButton" name="submitButton" class="btn btn-info px-5 py-2 my-2">Search City</button>
+           <span id="error" name="error" style="color: red"></span>    
+            <div class="temperature-description">
+                
+            </div>    
+        </div>            
+    </section>
+    
+    <section>
+            <table class="table" id="weatherTable"></table>
+        </section>
 
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $("#reset").click(function (e) {
-                location.reload();
-            });
 
-            $("#submitButton").click(function (e) {
-                $.ajax({
-                    type: "POST",
-                    url: "http://api.openweathermap.org/data/2.5/group?id=2643741,2644688,2633352,2654675,2988507,2990969,2911298,2925535,2950159,3120501,3128760,5128581,4140963,4930956,5106834,5391959,5368361,5809844,4099974,4440906&appid=bf2b713b2d87c5136bf0883f0a491bf0&units=metric",
-                    dataType: "json",
-                    success: function (result, status, xhr) {
-                        res = CreateWeatherJson(result);
-                        $("#weatherTable").append("<thead><tr><th>City Id</th><th>City Name</th><th>Temperature</th><th>Min Temp</th><th>Max Temp</th><th>Humidity</th><th>Pressure</th></thead></table>");
-                        $('#weatherTable').DataTable({
-                            data: JSON.parse(res),
-                            columns: [
-                                { data: 'cityId' },
-                                { data: 'cityName' },
-                                { data: 'temp' },
-                                { data: 'tempMin' },
-                                { data: 'tempMax' },
-                                { data: 'pressure' },
-                                { data: 'humidity' }
-                            ],
-                            "pageLength": 5
-                        });
-                    },
-                    error: function (xhr, status, error) {
-                        console.log("Error: " + status + " " + error + " " + xhr.status + " " + xhr.statusText)
-                    }
-                });
-            });
+        
+        <section>
 
-            function CreateWeatherJson(json) {
-                var newJson = "";
-                for (i = 0; i < json.list.length; i++) {
-                    cityId = json.list[i].id;
-                    cityName = json.list[i].name;
-                    temp = json.list[i].main.temp
-                    pressure = json.list[i].main.pressure
-                    humidity = json.list[i].main.humidity
-                    tempmin = json.list[i].main.temp_min
-                    tempmax = json.list[i].main.temp_max
+        </section>
 
-                    newJson = newJson + "{";
-                    newJson = newJson + "\"cityId\"" + ": " + cityId + ","
-                    newJson = newJson + "\"cityName\"" + ": " + "\"" + cityName + "\"" + ","
-                    newJson = newJson + "\"temp\"" + ": " + temp + ","
-                    newJson = newJson + "\"pressure\"" + ": " + pressure + ","
-                    newJson = newJson + "\"humidity\"" + ": " + humidity + ","
-                    newJson = newJson + "\"tempMin\"" + ": " + tempmin + ","
-                    newJson = newJson + "\"tempMax\"" + ": " + tempmax
-                    newJson = newJson + "},";
-                }
-                return "[" + newJson.slice(0, newJson.length - 1) + "]"
-            }
-        });
-    </script>
-
-<link rel="stylesheet" href="css/index.css">
-   
-<script src="js/popper.min.js"></script>
-<link rel="stylesheet" href="css/bootstrap.min.css">
-<script src="js/bootstrap.min.js"></script>
-<script src="js/index.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript">
+</script>
+<link rel="stylesheet" href="assets/css/index.css">
+<script src="assets/js/popper.min.js"></script>
+<link rel="stylesheet" href="assets/css/bootstrap.min.css">
+<script src="assets/js/bootstrap.min.js"></script>
+<script src="assets/js/index.js"></script>
 </body>
 </html>
